@@ -5,3 +5,14 @@
 app-map {
     height: 100%;
 }
+
+.markers {
+    padding: 10px;
+}
+
+.marker {
+    &:hover {
+        cursor: pointer;
+        background-color: #eeeeee;
+    }
+}

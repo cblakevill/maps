@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MapService } from 'src/app/map/service/map.service';
 
 @Component({
   selector: 'app-map-page',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public mapService: MapService) { }
 
   ngOnInit(): void {
+  }
+
+  panTo(coord) {
+    this.mapService.panTo(coord)
   }
 
 }
