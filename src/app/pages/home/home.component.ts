@@ -13,8 +13,7 @@ export class HomeComponent implements OnInit {
   public pages = pages
 
   constructor(
-    private router: Router,
-    private mapService: MapService) { 
+    private router: Router) { 
    }
 
   ngOnInit(): void {

@@ -1,5 +1,6 @@
 export interface MapMarker  {
     coord: Number[]
-    text: string
+    text: string,
+    type: string,
     timestamp: number
 }

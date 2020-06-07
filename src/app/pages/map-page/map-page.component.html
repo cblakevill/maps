@@ -1,16 +1,23 @@
-<div class="page" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="10px">
-    <app-map fxFlex="70"></app-map>
-    <mat-tab-group class="side-panel" fxFlex="30">
-        <mat-tab label="Markers">
-            <div class="markers">
-                <div class="marker" 
-                     *ngFor="let marker of mapService.markers | keyvalue"
-                     (click)="panTo(marker.value.coord)">
-                    <p>{{marker.value.text}}</p>
-                    <mat-divider></mat-divider>
+<div class="page" id="page">
+    <div class="page" fxLayout="row" fxLayoutAlign="center stretch">
+        <app-map fxFlex="100"></app-map>
+    </div>
+    <div id="side-panel" [@sidePanelAnimation]="closeOpen">
+        <div class="close" (click)="toggleSidePanel()"><mat-icon>{{closeOpen}}</mat-icon></div>
+        <mat-tab-group>
+            <mat-tab label="Markers">
+                <div class="markers">
+                    <div class="marker" 
+                         *ngFor="let marker of mapService.markers | keyvalue"
+                         (click)="panTo(marker.value.coord)">
+                        <p>{{marker.value.text}}</p>
+                        <mat-divider></mat-divider>
+                    </div>
                 </div>
-            </div>
-        </mat-tab>
-        <mat-tab label="Settings"></mat-tab>
-    </mat-tab-group>
+            </mat-tab>
+            <mat-tab label="Settings"></mat-tab>
+        </mat-tab-group>
+    </div>
+    <div id="resizer" cdkDragLockAxis="x" cdkDrag (cdkDragMoved)="onDrag($event)" (cdkDragEnded)="endDrag()"></div>
 </div>
+

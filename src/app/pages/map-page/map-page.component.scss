@@ -1,20 +1,61 @@
 .page {
     height: 100%;
-    padding: 10px;
 }
 
 app-map {
+    z-index: 700;
     height: 100%;
 }
 
-.side-panel {
+#side-panel {
+    z-index: 900;
+    position: absolute;
     background-color: #ffffff;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border: 0.5px solid #cccccc;
     padding: 10px;
-    border-top: 0.5px solid #eeeeee;
-    border-left: 0.5px solid #eeeeee;
-    border-bottom: 1px solid #dddddd;
-    border-right: 1px solid #dddddd;
-    border-radius: 4px;
+    height: 75%;
+    width: 30%;
+    right: 0px;
+    top: 12.5%;
+    bottom: 12.5%;
+    box-shadow: -6px 6px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+.close {
+    position: absolute;
+    border-right: 1px solid #cccccc;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    top: 10px;
+    left: -21px;
+    width: 20px;
+    height: 40px;
+    background-color: #ffffff;
+    box-shadow: -3px 3px 3px 0 rgba(0, 0, 0, 0.2);
+    &:hover {
+        cursor: pointer;
+        background-color: #eeeeee;
+    }
+    mat-icon {
+        color: #aaaaaa;
+    }
+}
+
+#resizer {
+    width: 5px;
+    height: 75%;
+    top: 12.5%;
+    bottom: 12.5%;
+    left: 70%;
+    cursor: e-resize;
+    display: inline-flex;
+    background: transparent;
+    position: absolute;
+    z-index: 900;
 }
 
 .marker {

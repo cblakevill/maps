@@ -33,8 +33,11 @@ export class MapComponent implements OnInit, AfterViewInit {
       this.panTo(coord)
     });
     this.mapService.addMarker_.subscribe(marker => {
-      this.addMarker(marker.coord, marker.text)
+      this.addMarker(marker.coord, marker.text, marker.type)
     })
+    this.mapService.resize_.subscribe(() => {
+      this.map.updateSize();
+    });
   }
 
   ngAfterViewInit(): void {
@@ -60,11 +63,14 @@ export class MapComponent implements OnInit, AfterViewInit {
     });
     var markerLayer = new VectorLayer({
       source: this.markers,
-      style: new Style({
-        image: new Icon({
-          src: '/assets/marker.svg'
+      style: feature => {
+        return new Style({
+          image: new Icon({
+            src: '/assets/marker_'+ feature.values_.type +'.png',
+            anchor: [0.5, 1]
+          })
         })
-      })
+      }
     });
     
     this.view = new View({
@@ -96,7 +102,7 @@ export class MapComponent implements OnInit, AfterViewInit {
           marker.style.display = 'block';
           var pixel = this.map.getPixelFromCoordinate(fromLonLat(f.values_.coord));
           marker.style.left = (pixel[0]+10) + 'px';
-          marker.style.top = (pixel[1]+50-marker.offsetHeight) + 'px';
+          marker.style.top = (pixel[1]+20-marker.offsetHeight) + 'px';
         }
         return f; 
       });
@@ -113,11 +119,10 @@ export class MapComponent implements OnInit, AfterViewInit {
     });
 
     Object.keys(this.mapService.markers).forEach(m => {
-      console.log([this.mapService.markers[m].coord, m])
-      this.addMarker(this.mapService.markers[m].coord, m)
+      var marker = this.mapService.markers[m];
+      this.addMarker(marker.coord, marker.text, marker.type)
     })
 
-    console.log(this.mapService.panRequest)
     if(this.mapService.panRequest) {
       this.panTo(this.mapService.panRequest)
     }
@@ -131,7 +136,6 @@ export class MapComponent implements OnInit, AfterViewInit {
     var zoomIn = Math.max(currentZoom, 8.5);
     var m = (zoomIn - 6.5)/0.5
     var t = Math.max(0, Math.min(m*currentZoom-m*6.5, 0.5));
-    console.log([m, m*currentZoom-m*6.5])
     this.view.animate({
       zoom: zoomOut,
       duration: duration * t
@@ -146,11 +150,12 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.mapService.centre = coord;
   }
 
-  addMarker(coord, text) {
+  addMarker(coord, text, type) {
     this.markers.addFeature(new Feature({
       geometry: new Point(fromLonLat(coord)),
       text: text,
-      coord: coord
+      coord: coord,
+      type: type
     }));
   }
 
