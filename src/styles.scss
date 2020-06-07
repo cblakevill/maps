@@ -4,3 +4,23 @@ hr {
     margin-right: 1px;
 }
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+::-webkit-scrollbar
+{
+  width: 5px;  /* for vertical scrollbars */
+  height: 5px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  opacity: 0;
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: #ababab;
+  border-radius: 3px;
+}

@@ -1,11 +1,16 @@
-<div class="page" fxLayout="row" fxLayoutAlign="center stretch">
-    <app-map fxFlex="80"></app-map>
-    <div class="markers" fxFlex="20">
-        <div class="marker" 
-             *ngFor="let marker of mapService.markers | keyvalue"
-             (click)="panTo(marker.value.coord)">
-            <p>{{marker.value.text}}</p>
-            <hr>
-        </div>
-    </div>
+<div class="page" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="10px">
+    <app-map fxFlex="70"></app-map>
+    <mat-tab-group class="side-panel" fxFlex="30">
+        <mat-tab label="Markers">
+            <div class="markers">
+                <div class="marker" 
+                     *ngFor="let marker of mapService.markers | keyvalue"
+                     (click)="panTo(marker.value.coord)">
+                    <p>{{marker.value.text}}</p>
+                    <mat-divider></mat-divider>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Settings"></mat-tab>
+    </mat-tab-group>
 </div>

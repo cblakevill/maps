@@ -19,6 +19,7 @@ export class MapService {
     this.addMarker([151.2093, -33.8688], "Sydney");
     this.addMarker([138.6007, -34.928], "Adelaide");
     this.addMarker([115.8605, -31.9505], "Perth");
+
   }
 
   public addMarker(coord: Number[], text: string) {
@@ -31,6 +32,7 @@ export class MapService {
   }
 
   public panTo(coord: Number[]) {
+    console.log("yeet")
     this.panTo_.next(coord);
     this.panRequest = coord;
   }

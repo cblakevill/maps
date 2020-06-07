@@ -9,6 +9,7 @@ import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer';
 import {OSM, Vector as VectorSource} from 'ol/source';
 import {fromLonLat} from 'ol/proj';
 import GeoJSON from 'ol/format/GeoJSON';
+import {defaults as defaultControls, Attribution} from 'ol/control';
 
 import earth from '../data/ne_110m_earth.json'
 import { MapService } from '../service/map.service';
@@ -74,7 +75,13 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.map = new Map({
       layers: [tileLayer, markerLayer],
       target: 'map',
-      view: this.view
+      view: this.view,
+      controls: defaultControls({attribution: false}).extend([
+        new Attribution({
+          collapsible: true,
+          collapsed: true
+        })
+      ]),
     });
 
     this.map.on('pointermove', e => {
@@ -85,13 +92,15 @@ export class MapComponent implements OnInit, AfterViewInit {
       }
       var f = this.map.forEachFeatureAtPixel(e.pixel, f => {
         if(f.values_.text) {
-          document.getElementById("markerText").innerHTML = f.values_.text
-          marker.style.left = (e.pixel[0]+10) + 'px';
-          marker.style.top = (e.pixel[1]-10) + 'px';
+          this.markerText = f.values_.text
+          marker.style.display = 'block';
+          var pixel = this.map.getPixelFromCoordinate(fromLonLat(f.values_.coord));
+          marker.style.left = (pixel[0]+10) + 'px';
+          marker.style.top = (pixel[1]+50-marker.offsetHeight) + 'px';
         }
         return f; 
       });
-      marker.style.display = f ? 'block' : 'none'
+      if(!f) marker.style.display = "none";
       document.body.style.cursor = f ? 'pointer' : 'default'
     });
 
@@ -108,6 +117,7 @@ export class MapComponent implements OnInit, AfterViewInit {
       this.addMarker(this.mapService.markers[m].coord, m)
     })
 
+    console.log(this.mapService.panRequest)
     if(this.mapService.panRequest) {
       this.panTo(this.mapService.panRequest)
     }

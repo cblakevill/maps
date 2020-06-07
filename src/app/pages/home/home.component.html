@@ -1,0 +1,5 @@
+<div *ngFor="let page of pages">
+    <div (click)="navigate(page.route)">
+        <p>{{page.name}}</p>
+    </div>    
+</div>

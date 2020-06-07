@@ -1,0 +1,7 @@
+<div class="header" fxLayout="row" fxLayoutAlign="start center">
+        <img src="assets/logo.png"/>
+        <span class="title">Maps</span>
+        <span class="page" 
+              *ngFor="let page of pages" 
+              (click)="navigate(page.route)">{{page.name}}</span>
+</div>
