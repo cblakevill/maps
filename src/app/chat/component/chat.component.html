@@ -1,0 +1,30 @@
+<div class="chat">
+    <div id="output">
+        <div class="msg" *ngFor="let msg of chatService.messages">
+            <div class="me" fxLayout="row" fxLayoutAlign="space-between center">
+                <p class="text" fxFlex="75">{{msg.message}}</p>
+                <p class="time" fxFlex="25">{{msg.timestamp | date: 'dd MMM hh:mm'}}</p>
+            </div>
+            <div *ngIf="msg.responses.length > 0; else noResponse">
+                <div *ngFor="let response of msg.responses">
+                    <div fxFlex="93" fxLayout="row" fxLayoutAlign="space-between center">
+                        <p class="them">{{response}}</p>
+                        <div fxFlex="7">
+                            <div *ngIf="locationIncluded(response)">
+                                <mat-icon (click)="panTo(response)">location_on</mat-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-template #noResponse><p class="them"></p></ng-template>
+        </div>
+    </div>
+    <div class="input" fxLayout="row" fxLayoutAlign="center center">
+        <mat-form-field appearance="outline" fxFlexFill>
+            <mat-label>Input</mat-label>
+            <input matInput type="text" [(ngModel)]="text" (keyup.enter)="submit()">
+            <mat-icon class="send-icon" matSuffix (click)="submit()">send</mat-icon>
+        </mat-form-field>
+    </div>
+</div>

@@ -11,6 +11,7 @@ import { MaterialModule } from './material/material.module';
 import { HomeComponent } from './pages/home/home.component';
 import { ViewPortComponent } from './pages/view-port/view-port.component';
 import { HeaderComponent } from './pages/header/header.component';
+import { ChatModule } from './chat/chat.module';
 
 @NgModule({
   declarations: [
@@ -24,9 +25,10 @@ import { HeaderComponent } from './pages/header/header.component';
     BrowserModule,
     AppRoutingModule,
     FlexLayoutModule,
-    MapModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    MapModule,
+    ChatModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

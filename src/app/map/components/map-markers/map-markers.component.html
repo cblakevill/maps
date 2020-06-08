@@ -1,0 +1,8 @@
+<div class="markers">
+    <div class="marker" 
+        *ngFor="let marker of mapService.markers | keyvalue"
+        (click)="panTo(marker.value.coord)">
+        <p>{{marker.value.text}}</p>
+        <mat-divider></mat-divider>
+    </div>
+</div>

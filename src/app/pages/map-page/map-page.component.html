@@ -4,20 +4,13 @@
     </div>
     <div id="side-panel" [@sidePanelAnimation]="closeOpen">
         <div class="close" (click)="toggleSidePanel()"><mat-icon>{{closeOpen}}</mat-icon></div>
-        <mat-tab-group>
-            <mat-tab label="Markers">
-                <div class="markers">
-                    <div class="marker" 
-                         *ngFor="let marker of mapService.markers | keyvalue"
-                         (click)="panTo(marker.value.coord)">
-                        <p>{{marker.value.text}}</p>
-                        <mat-divider></mat-divider>
-                    </div>
-                </div>
-            </mat-tab>
-            <mat-tab label="Settings"></mat-tab>
-        </mat-tab-group>
+        <div class="header" fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="view" *ngFor="let view of views" (click)="navigate(view.route)">{{view.icon}}</mat-icon>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="app">
+            <router-outlet></router-outlet>
+        </div>
     </div>
-    <div id="resizer" cdkDragLockAxis="x" cdkDrag (cdkDragMoved)="onDrag($event)" (cdkDragEnded)="endDrag()"></div>
 </div>
 

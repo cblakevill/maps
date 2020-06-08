@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { MapService } from 'src/app/map/service/map.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-map-page',
@@ -23,26 +23,22 @@ export class MapPageComponent implements OnInit {
   width=30;
   closeOpen="chevron_right";
 
-  constructor(public mapService: MapService) { }
+  views = [
+    { route: '/map', icon: 'location_on' },
+    { route: '/map/chat', icon: 'live_help' },
+    { route: '/map/**', icon: 'notification_important' }
+  ]
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  panTo(coord) {
-    this.mapService.panTo(coord)
-  }
-
-  onDrag(event) {
-      var pageWidth = document.getElementById('page').offsetWidth;
-      var width = 100*(pageWidth-event.pointerPosition.x)/pageWidth;
-      this.width = width;
-  }
-
-  endDrag() {
-    this.mapService.updateSize();
-  }
-
   toggleSidePanel() {
     this.closeOpen = this.closeOpen === "chevron_right" ? "chevron_left" : "chevron_right";
+  }
+
+  navigate(route) {
+    this.router.navigate([route])
   }
 }

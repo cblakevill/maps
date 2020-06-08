@@ -11,8 +11,8 @@ import {fromLonLat} from 'ol/proj';
 import GeoJSON from 'ol/format/GeoJSON';
 import {defaults as defaultControls, Attribution} from 'ol/control';
 
-import earth from '../data/ne_110m_earth.json'
-import { MapService } from '../service/map.service';
+import earth from '../../data/ne_110m_earth.json'
+import { MapService } from '../../service/map.service';
 
 @Component({
   selector: 'app-map',

@@ -1,0 +1,15 @@
+.markers {
+    overflow-y: auto;
+    height: 90%;
+    border: 1px solid #dddddd;
+}
+
+.marker {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    &:hover {
+        cursor: pointer;
+        background-color: #eeeeee;
+    }
+}
