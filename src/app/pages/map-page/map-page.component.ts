@@ -26,7 +26,7 @@ export class MapPageComponent implements OnInit {
   views = [
     { route: '/map', icon: 'location_on' },
     { route: '/map/chat', icon: 'live_help' },
-    { route: '/map/**', icon: 'notification_important' }
+    { route: '/map/notifications', icon: 'notification_important' }
   ]
 
   constructor(private router: Router) { }

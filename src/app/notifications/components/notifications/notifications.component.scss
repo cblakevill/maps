@@ -1,0 +1,32 @@
+.notifications {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background-color: #ffffff;
+}
+
+mat-drawer-container {
+    height: 100%;
+}
+
+mat-drawer {
+    width: 70%;
+    box-shadow: 8px 0 8px -8px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+}
+
+mat-icon {
+    color: #444444;
+    &:hover {
+        cursor: pointer;
+        opacity: 0.5;
+    }
+}
+
+.type {
+    margin-top: 10px;
+}
+
+.subtype {
+    margin-left: 20px;
+}

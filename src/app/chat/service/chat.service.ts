@@ -22,12 +22,12 @@ export class ChatService {
       responses: [ 'in nebraska' ],
       timestamp: new Date()
     }, 
-    {
+    /*{
       message: 'who is in australia',
       user: 'user',
       responses: [ 'blake was last seen bein a dumb idiot at  lololo xd he thinks hes funny lololol whatt dummy', 'hayden is really cool btw dddddddd what time is it i need to poop', 'blake', 'hayden','blake was last seen bein a dumb idiot lololo xd he thinks hes funny lololol whatt dummy', 'hayden is really cool btw dddddddd what time is it i need to poop', 'blake', 'hayden'  ],
       timestamp: new Date()
-    }
+    }*/
   ];
 
   constructor() { 

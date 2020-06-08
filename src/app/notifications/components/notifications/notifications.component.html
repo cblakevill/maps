@@ -1,0 +1,17 @@
+<div class="notifications">
+    <mat-drawer-container>
+        <mat-drawer #sidenav mode="side">
+            <div class="type" *ngFor="let type of notificationService.notificationTypes">
+                <mat-checkbox color="primary" [(ngModel)]="notificationService.subscriptions[type.type].checked" (click)="typeClicked(type.type)" >{{type.type}}</mat-checkbox>
+                <div class="subtype" *ngFor="let subtype of type.subtypes">
+                    <mat-checkbox color="primary" 
+                                  (click)="subtypeClicked(type.type, subtype)" 
+                                  [(ngModel)]="notificationService.subscriptions[type.type].types[subtype]">{{subtype}}</mat-checkbox>
+                </div>
+            </div>
+        </mat-drawer>
+        <mat-drawer-content>
+            <mat-icon (click)="toggle()" [@settingsAnimation]="isOpen?'close':'open'">settings</mat-icon>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>

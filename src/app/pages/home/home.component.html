@@ -1,5 +1,18 @@
-<div *ngFor="let page of pages">
-    <div (click)="navigate(page.route)">
-        <p>{{page.name}}</p>
-    </div>    
+<div class="home" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="15px">
+    <div class="item" fxFlex="50">
+        <div class="header">
+            <p>Notifications</p>
+        </div>
+        <div class="app">
+            <app-notifications></app-notifications>
+        </div>
+    </div>
+    <div class="item" fxFlex="50">
+        <div class="header">
+            <p>Chat</p>
+        </div>
+        <div class="app">
+            <app-chat></app-chat>
+        </div>
+    </div>
 </div>

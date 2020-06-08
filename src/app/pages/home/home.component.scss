@@ -1,0 +1,30 @@
+.home {
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+}
+
+.item {
+    border-radius: 6px;
+    height: calc(100% - 10px);
+    background-color: #ffffff;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+}
+
+.header {
+    height: 7%;
+    p {
+        margin: 0.5em;
+        font-size: 3em;
+        font-weight: 400;
+    }
+}
+
+.app {
+    height: 82%;
+    margin: 20px;
+}
+
+mat-divider {
+    margin-bottom: 20px;
+}

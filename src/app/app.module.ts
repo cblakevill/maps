@@ -12,6 +12,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ViewPortComponent } from './pages/view-port/view-port.component';
 import { HeaderComponent } from './pages/header/header.component';
 import { ChatModule } from './chat/chat.module';
+import { NotificationsModule } from './notifications/notifications.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ChatModule } from './chat/chat.module';
     MaterialModule,
     MapModule,
     ChatModule,
+    NotificationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

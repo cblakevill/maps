@@ -17,7 +17,7 @@
 
 .app {
     z-index: 700;
-    height: 90%;
+    height: calc(90% - 20px);
     padding: 10px;
 }
 

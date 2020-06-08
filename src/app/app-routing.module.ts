@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ViewPortComponent } from './pages/view-port/view-port.component';
 import { ChatComponent } from './chat/component/chat.component';
 import { MapMarkersComponent } from './map/components/map-markers/map-markers.component';
+import { NotificationsComponent } from './notifications/components/notifications/notifications.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
         component: MapPageComponent,
         children: [
           { path: '', component: MapMarkersComponent },
-          { path: 'chat', component: ChatComponent }
+          { path: 'chat', component: ChatComponent },
+          { path: 'notifications', component: NotificationsComponent}
         ]
       }
     ]

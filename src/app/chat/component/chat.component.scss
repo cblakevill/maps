@@ -2,6 +2,7 @@
     height: 100%;
     width: 100%;
     position: relative;
+    background-color: #ffffff;
 }
 
 #output {
@@ -65,7 +66,8 @@ mat-form-field {
     }
     .time {
         font-weight: 250;
-        color: #aaaaaa;
+        color: #444444;
         font-size: 0.8em;
+        text-align: right;
     }
 }
